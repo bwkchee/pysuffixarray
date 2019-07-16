@@ -82,7 +82,8 @@ class SuffixArray:
         """Constructs suffix array in O(nlogn) time by sorting ranking pairs of suffixes."""
         string_len = len(string)
         suffix_array = list(range(string_len))
-        rank_array = [ord(c) for c in string]
+        max_len = string_len-1
+        rank_array = [min(ord(c), max_len) for c in string]
 
         k = 1
         # This sorting process will be repeated at most log(n) times.
